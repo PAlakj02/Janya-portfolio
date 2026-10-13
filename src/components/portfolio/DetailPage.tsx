@@ -4,7 +4,7 @@ import { slugify } from "@/lib/slug";
 import { PhotoGallery } from "./PhotoGallery";
 
 const CONTACT_LINKS = [
-  { label: "Email", href: "mailto:hello@janya.com" },
+  { label: "Email", href: "mailto:japhbkk@gmail.com" },
   { label: "Instagram", href: "#" },
   { label: "LinkedIn", href: "#" },
   { label: "Resume", href: "#" },
