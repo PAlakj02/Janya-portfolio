@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { STATS, TABS } from "@/components/binder/content";
+import { HERO_PHOTO } from "@/components/binder/photos";
 import { slugify } from "@/lib/slug";
 import { Reveal } from "./Reveal";
 import { RoleCycler } from "./RoleCycler";
@@ -74,10 +75,14 @@ export function Hero({ navigate }: { navigate: (to: string) => void }) {
         </div>
 
         <Reveal delay={200} className="relative mx-auto w-full max-w-sm lg:max-w-none">
-          <div
-            aria-hidden
-            className="relative aspect-[4/5] w-full overflow-hidden rounded-[3rem] border border-ink/10 bg-card shadow-[0_30px_60px_-30px_rgba(60,30,30,0.25)]"
-          />
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[3rem] border border-ink/10 bg-card shadow-[0_30px_60px_-30px_rgba(60,30,30,0.25)]">
+            <img
+              src={HERO_PHOTO.src}
+              alt={HERO_PHOTO.alt}
+              fetchPriority="high"
+              className="h-full w-full object-cover object-top"
+            />
+          </div>
 
           <div
             className="animate-float absolute -left-6 top-10 rounded-2xl border border-ink/10 bg-card/95 px-4 py-3 shadow-lg backdrop-blur sm:-left-10"

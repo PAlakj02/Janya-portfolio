@@ -34,3 +34,6 @@ dist-ssr
 # Local reference images (not used by the site)
 /*.png
 /*.jpeg
+
+# Original full-size photos (web-sized copies live in src/assets/photos)
+/photos/

@@ -1,8 +1,11 @@
+import { PHOTOS, type Photo } from "./photos";
+
 export type Section = {
   heading: string;
   meta?: string;
   body?: string;
   items?: string[];
+  photos?: Photo[];
 };
 
 export type Tab = {
@@ -11,6 +14,7 @@ export type Tab = {
   kicker: string;
   title: string;
   intro?: string;
+  photos?: Photo[];
   spine: string;
   sections: Section[];
 };
@@ -49,6 +53,7 @@ export const TABS: Tab[] = [
     title: "How I stay human while building with AI.",
     intro:
       "I'm a student founder, researcher, and creative leader exploring one question: how can young people stay human, capable, and emotionally grounded in a world increasingly shaped by artificial intelligence?",
+    photos: PHOTOS.about,
     spine: "oklch(0.92 0.022 8)",
     sections: [
       {
@@ -101,6 +106,7 @@ export const TABS: Tab[] = [
       {
         heading: "LivLit",
         meta: "Founder & Mentor",
+        photos: PHOTOS.livlit,
         body: "I started LivLit to help middle and high school students become emotionally literate, digitally balanced, and prepared to use AI as an amplifier rather than a replacement.",
         items: [
           "500+ students reached",
@@ -112,12 +118,14 @@ export const TABS: Tab[] = [
       {
         heading: "Tokado",
         meta: "Creator & Co-Founder",
+        photos: PHOTOS.tokado,
         body: "A platform I'm building that helps companies reduce AI operating costs by routing prompts to the most efficient large language model. Currently integrating Alibaba's LLM library.",
         items: ["Built website & brand", "Leads client pitches", "Whitepaper in progress"],
       },
       {
         heading: "Irreplaceable Institute",
         meta: "Certified Facilitator",
+        photos: PHOTOS.irreplaceable,
         body: "I help design and facilitate after-school workshops for middle school students focused on reflection, identity, wellbeing, and becoming irreplaceable.",
         items: ["200+ students reached", "Weekly workshop curriculum", "Certified facilitator"],
       },
@@ -199,6 +207,7 @@ export const TABS: Tab[] = [
       {
         heading: "Dance",
         meta: "Bollywood · Latin · Hip-Hop",
+        photos: PHOTOS.dance,
         body: "I'm Vice Captain of the Varsity Dance Team — choreography, mentoring, and a stage full of medals. A team of 15.",
         items: [
           "ATOD National Gold · 2024 · 2025 · 2026",

@@ -1,6 +1,7 @@
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { TABS, type Section } from "@/components/binder/content";
 import { slugify } from "@/lib/slug";
+import { PhotoGallery } from "./PhotoGallery";
 
 const CONTACT_LINKS = [
   { label: "Email", href: "mailto:hello@janya.com" },
@@ -64,6 +65,7 @@ export function DetailPage({
             <h1 className="mt-3 text-balance font-serif-display text-4xl font-medium leading-tight sm:text-5xl">
               {section.heading}
             </h1>
+            {section.photos && <PhotoGallery photos={section.photos} className="mt-8" />}
             {section.body && (
               <p className="mt-6 max-w-2xl font-serif-display text-xl italic leading-[1.7] text-muted-foreground">
                 {section.body}
@@ -96,6 +98,13 @@ export function DetailPage({
                 {tab.intro}
               </p>
             )}
+            {tab.photos && (
+              <PhotoGallery
+                photos={tab.photos}
+                aspect="aspect-[4/5]"
+                className="mx-auto mt-10 max-w-md"
+              />
+            )}
 
             {tab.id === "contact" ? (
               <div className="mt-10 grid gap-3 sm:grid-cols-2">
@@ -122,6 +131,7 @@ export function DetailPage({
                         </span>
                       )}
                     </div>
+                    {s.photos && <PhotoGallery photos={s.photos} className="mt-5" />}
                     {s.body && (
                       <p className="mt-4 max-w-2xl leading-[1.8] text-foreground/75">{s.body}</p>
                     )}
