@@ -1,11 +1,20 @@
 import { PHOTOS, type Photo } from "./photos";
 
+export type Press = {
+  outlet: string;
+  headline: string;
+  date: string;
+  url: string;
+  quote?: string;
+};
+
 export type Section = {
   heading: string;
   meta?: string;
   body?: string;
   items?: string[];
   photos?: Photo[];
+  press?: Press[];
 };
 
 export type Tab = {
@@ -107,6 +116,16 @@ export const TABS: Tab[] = [
         heading: "LivLit",
         meta: "Founder & Mentor",
         photos: PHOTOS.livlit,
+        press: [
+          {
+            outlet: "The Nation Thailand",
+            headline:
+              "17-Year-Old Bangkok Student Launches LivLit to Help Young People Build the Human Skills AI Cannot Replace",
+            date: "August 20, 2026",
+            url: "https://www.nationthailand.com/blogs/business/tech/40069981",
+            quote: "We are still preparing students for a world that no longer exists.",
+          },
+        ],
         body: "I started LivLit to help middle and high school students become emotionally literate, digitally balanced, and prepared to use AI as an amplifier rather than a replacement.",
         items: [
           "500+ students reached",

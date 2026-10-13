@@ -1,5 +1,5 @@
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import { TABS, type Section } from "@/components/binder/content";
+import { TABS, type Press, type Section } from "@/components/binder/content";
 import { slugify } from "@/lib/slug";
 import { PhotoGallery } from "./PhotoGallery";
 
@@ -9,6 +9,30 @@ const CONTACT_LINKS = [
   { label: "LinkedIn", href: "#" },
   { label: "Resume", href: "#" },
 ];
+
+function PressCard({ press }: { press: Press }) {
+  return (
+    <a
+      href={press.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group/press mt-6 block rounded-2xl border border-ink/15 bg-card px-6 py-5 transition-colors hover:border-gold hover:bg-secondary"
+    >
+      <div className="flex items-center justify-between gap-4">
+        <span className="text-[10px] uppercase tracking-[0.22em] text-foreground/50">
+          As featured in · {press.outlet} · {press.date}
+        </span>
+        <ArrowUpRight className="h-4 w-4 shrink-0 text-foreground/40 transition-all group-hover/press:-translate-y-0.5 group-hover/press:translate-x-0.5 group-hover/press:text-gold" />
+      </div>
+      <p className="mt-2 font-serif-display text-xl leading-snug">{press.headline}</p>
+      {press.quote && (
+        <p className="mt-3 font-serif-display italic text-foreground/65">
+          &ldquo;{press.quote}&rdquo;
+        </p>
+      )}
+    </a>
+  );
+}
 
 export function DetailPage({
   segments,
@@ -71,6 +95,9 @@ export function DetailPage({
                 {section.body}
               </p>
             )}
+            {section.press?.map((p) => (
+              <PressCard key={p.url} press={p} />
+            ))}
             {section.items && (
               <ul className="mt-10 grid gap-x-10 gap-y-1 border-t border-dashed border-ink/15 pt-8 sm:grid-cols-2">
                 {section.items.map((item) => (
@@ -135,6 +162,9 @@ export function DetailPage({
                     {s.body && (
                       <p className="mt-4 max-w-2xl leading-[1.8] text-foreground/75">{s.body}</p>
                     )}
+                    {s.press?.map((p) => (
+                      <PressCard key={p.url} press={p} />
+                    ))}
                     {s.items &&
                       (s.heading === "At a glance" ? (
                         <dl className="mt-6 grid gap-x-10 gap-y-5 sm:grid-cols-2">
