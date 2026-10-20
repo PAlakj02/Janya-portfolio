@@ -139,11 +139,6 @@ export function DetailPage({
                   <a
                     key={link.label}
                     href={link.href}
-                    {...(link.href.startsWith("http") && {
-                      target: "_blank",
-                      rel: "noopener noreferrer",
-                    })}
-                    {...(link.label === "Resume" && { download: "Janya Resume.docx" })}
                     className="group/link flex items-center justify-between rounded-xl border border-ink/15 bg-card px-5 py-4 transition-colors hover:border-gold hover:bg-secondary"
                   >
                     <span className="text-sm font-medium tracking-wide">{link.label}</span>
