@@ -1,13 +1,9 @@
 import type { CSSProperties } from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { STATS, TABS } from "@/components/binder/content";
+import { STATS } from "@/components/binder/content";
 import { HERO_PHOTO } from "@/components/binder/photos";
-import { slugify } from "@/lib/slug";
 import { Reveal } from "./Reveal";
 import { RoleCycler } from "./RoleCycler";
-
-const firstProject = TABS.find((t) => t.id === "projects")?.sections[0];
-const firstProjectPath = firstProject ? `/projects/${slugify(firstProject.heading)}` : "/about";
 
 export function Hero({ navigate }: { navigate: (to: string) => void }) {
   return (
@@ -42,7 +38,7 @@ export function Hero({ navigate }: { navigate: (to: string) => void }) {
           <Reveal delay={240} className="mt-8 flex flex-wrap items-center gap-4">
             <button
               type="button"
-              onClick={() => navigate(firstProjectPath)}
+              onClick={() => navigate("/projects")}
               className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
             >
               Explore my work

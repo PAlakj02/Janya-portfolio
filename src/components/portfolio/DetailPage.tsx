@@ -5,9 +5,9 @@ import { PhotoGallery } from "./PhotoGallery";
 
 const CONTACT_LINKS = [
   { label: "Email", href: "mailto:japhbkk@gmail.com" },
-  { label: "Instagram", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "Resume", href: "#" },
+  { label: "Instagram", href: "https://www.instagram.com/livlitwithjaan/" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/janyaph/" },
+  { label: "Resume", href: "/Janya-Resume.docx" },
 ];
 
 function PressCard({ press }: { press: Press }) {
@@ -139,6 +139,11 @@ export function DetailPage({
                   <a
                     key={link.label}
                     href={link.href}
+                    {...(link.href.startsWith("http") && {
+                      target: "_blank",
+                      rel: "noopener noreferrer",
+                    })}
+                    {...(link.label === "Resume" && { download: "Janya Resume.docx" })}
                     className="group/link flex items-center justify-between rounded-xl border border-ink/15 bg-card px-5 py-4 transition-colors hover:border-gold hover:bg-secondary"
                   >
                     <span className="text-sm font-medium tracking-wide">{link.label}</span>
@@ -159,6 +164,29 @@ export function DetailPage({
                       )}
                     </div>
                     {s.photos && <PhotoGallery photos={s.photos} className="mt-5" />}
+                    {s.mentions && (
+                      <p className="mt-4 max-w-2xl leading-[1.8] text-foreground/75">
+                        Featured in{" "}
+                        {s.mentions.map((m, i) => (
+                          <span key={m.label}>
+                            {i > 0 && " · "}
+                            {m.url ? (
+                              <a
+                                href={m.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="underline decoration-gold/60 underline-offset-4 transition-colors hover:text-foreground hover:decoration-gold"
+                              >
+                                {m.label}
+                              </a>
+                            ) : (
+                              m.label
+                            )}
+                          </span>
+                        ))}
+                        .
+                      </p>
+                    )}
                     {s.body && (
                       <p className="mt-4 max-w-2xl leading-[1.8] text-foreground/75">{s.body}</p>
                     )}

@@ -8,10 +8,16 @@ export type Press = {
   quote?: string;
 };
 
+export type Mention = {
+  label: string;
+  url?: string;
+};
+
 export type Section = {
   heading: string;
   meta?: string;
   body?: string;
+  mentions?: Mention[];
   items?: string[];
   photos?: Photo[];
   press?: Press[];
@@ -101,7 +107,16 @@ export const TABS: Tab[] = [
       },
       {
         heading: "Media & validation",
-        body: "Featured in The Nation Thailand · Bambi Magazine · TSN Talks · Bangkok Post · MASALA Magazine · Woody Talks. Recognised by YPO, the British Science Association (CREST Gold), and Noah Berkson (Guest Lecturer, Stanford).",
+        mentions: [
+          {
+            label: "The Nation Thailand",
+            url: "https://www.nationthailand.com/blogs/business/tech/40069981",
+          },
+          { label: "Bambi Magazine" },
+          { label: "TSN Talks", url: "https://youtu.be/L8FuVEtSZ0Q?si=AmLNCx6cBXADP5Aq" },
+          { label: "MASALA Magazine", url: "https://www.instagram.com/p/DeLjrVcmYHM/" },
+        ],
+        body: "Recognised by YPO, the British Science Association (CREST Gold), and Noah Berkson (Guest Lecturer, Stanford).",
       },
     ],
   },
